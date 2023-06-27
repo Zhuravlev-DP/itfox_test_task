@@ -4,9 +4,7 @@ from rest_framework.authtoken.models import Token
 
 
 class CustomAuthentication(authentication.BaseAuthentication):
-    """
-    Кастомный класс авторизации.
-    """
+    """Кастомный класс авторизации."""
     def authenticate(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
