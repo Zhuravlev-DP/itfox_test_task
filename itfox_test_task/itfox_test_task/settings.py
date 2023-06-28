@@ -19,8 +19,6 @@ ALLOWED_HOSTS = get_list_allowed(
     os.getenv('ALLOWED_HOSTS', default='localhost')
 )
 
-
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -68,8 +66,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'itfox_test_task.wsgi.application'
 
-
-
 DATABASES = {
     'default': {
         'ENGINE': os.getenv('DB_ENGINE', default='django.db.backends.postgresql'),
@@ -80,8 +76,6 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT', default='5432')
     }
 }
-
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -97,8 +91,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
 
 LANGUAGE_CODE = 'ru'
 
