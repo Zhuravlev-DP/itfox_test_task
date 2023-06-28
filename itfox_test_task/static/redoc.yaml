@@ -403,7 +403,9 @@ components:
           type: string
           readOnly: true
         comments:
-          type: string
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
           readOnly: true
       required:
       - title

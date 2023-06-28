@@ -1,0 +1,447 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /api/v1/news/:
+    get:
+      operationId: listNews
+      description: "\u0412\u044C\u044E\u0441\u0435\u0442 \u043E\u0431\u0440\u0430\u0431\
+        \u043E\u0442\u043A\u0438 \u043D\u043E\u0432\u043E\u0441\u0442\u0435\u0439."
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?page=4
+                  previous:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?page=2
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/News'
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createNews
+      description: "\u0412\u044C\u044E\u0441\u0435\u0442 \u043E\u0431\u0440\u0430\u0431\
+        \u043E\u0442\u043A\u0438 \u043D\u043E\u0432\u043E\u0441\u0442\u0435\u0439."
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/News'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/News'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/News'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/News'
+          description: ''
+      tags:
+      - api
+  /api/v1/news/{id}/:
+    get:
+      operationId: retrieveNews
+      description: "\u0412\u044C\u044E\u0441\u0435\u0442 \u043E\u0431\u0440\u0430\u0431\
+        \u043E\u0442\u043A\u0438 \u043D\u043E\u0432\u043E\u0441\u0442\u0435\u0439."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: "A unique integer value identifying this \u041D\u043E\u0432\u043E\
+          \u0441\u0442\u044C."
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/News'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updateNews
+      description: "\u0412\u044C\u044E\u0441\u0435\u0442 \u043E\u0431\u0440\u0430\u0431\
+        \u043E\u0442\u043A\u0438 \u043D\u043E\u0432\u043E\u0441\u0442\u0435\u0439."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: "A unique integer value identifying this \u041D\u043E\u0432\u043E\
+          \u0441\u0442\u044C."
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/News'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/News'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/News'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/News'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateNews
+      description: "\u0412\u044C\u044E\u0441\u0435\u0442 \u043E\u0431\u0440\u0430\u0431\
+        \u043E\u0442\u043A\u0438 \u043D\u043E\u0432\u043E\u0441\u0442\u0435\u0439."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: "A unique integer value identifying this \u041D\u043E\u0432\u043E\
+          \u0441\u0442\u044C."
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/News'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/News'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/News'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/News'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroyNews
+      description: "\u0412\u044C\u044E\u0441\u0435\u0442 \u043E\u0431\u0440\u0430\u0431\
+        \u043E\u0442\u043A\u0438 \u043D\u043E\u0432\u043E\u0441\u0442\u0435\u0439."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: "A unique integer value identifying this \u041D\u043E\u0432\u043E\
+          \u0441\u0442\u044C."
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+  /api/v1/news/{news_id}/comments/:
+    get:
+      operationId: listComments
+      description: "\u0412\u044C\u044E\u0441\u0435\u0442 \u043E\u0431\u0440\u0430\u0431\
+        \u043E\u0442\u043A\u0438 \u043A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\
+        \u0438\u0435\u0432."
+      parameters:
+      - name: news_id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?page=4
+                  previous:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?page=2
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Comment'
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createComment
+      description: "\u0412\u044C\u044E\u0441\u0435\u0442 \u043E\u0431\u0440\u0430\u0431\
+        \u043E\u0442\u043A\u0438 \u043A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\
+        \u0438\u0435\u0432."
+      parameters:
+      - name: news_id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Comment'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+      tags:
+      - api
+  /api/v1/news/{news_id}/comments/{id}/:
+    get:
+      operationId: retrieveComment
+      description: "\u0412\u044C\u044E\u0441\u0435\u0442 \u043E\u0431\u0440\u0430\u0431\
+        \u043E\u0442\u043A\u0438 \u043A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\
+        \u0438\u0435\u0432."
+      parameters:
+      - name: news_id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroyComment
+      description: "\u0412\u044C\u044E\u0441\u0435\u0442 \u043E\u0431\u0440\u0430\u0431\
+        \u043E\u0442\u043A\u0438 \u043A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\
+        \u0438\u0435\u0432."
+      parameters:
+      - name: news_id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+  /api/v1/news/{id}/like/:
+    post:
+      operationId: likeNews
+      description: "\u0414\u043E\u0431\u0430\u0432\u043B\u044F\u0435\u0442/\u0443\u0434\
+        \u0430\u043B\u0435\u0442 \u043B\u0430\u0439\u043A \u043D\u043E\u0432\u043E\
+        \u0441\u0442\u0438."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: "A unique integer value identifying this \u041D\u043E\u0432\u043E\
+          \u0441\u0442\u044C."
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/News'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/News'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/News'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/News'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: likeNews
+      description: "\u0414\u043E\u0431\u0430\u0432\u043B\u044F\u0435\u0442/\u0443\u0434\
+        \u0430\u043B\u0435\u0442 \u043B\u0430\u0439\u043A \u043D\u043E\u0432\u043E\
+        \u0441\u0442\u0438."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: "A unique integer value identifying this \u041D\u043E\u0432\u043E\
+          \u0441\u0442\u044C."
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+  /api/v1/auth/:
+    post:
+      operationId: createAuthToken
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+          description: ''
+      tags:
+      - api
+components:
+  schemas:
+    News:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        author:
+          type: string
+          readOnly: true
+        pub_date:
+          type: string
+          format: date-time
+          readOnly: true
+        title:
+          type: string
+          maxLength: 200
+        text:
+          type: string
+        comments_count:
+          type: string
+          readOnly: true
+        likes_count:
+          type: string
+          readOnly: true
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+          readOnly: true
+      required:
+      - title
+      - text
+    Comment:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        author:
+          type: string
+          readOnly: true
+        news:
+          type: string
+          readOnly: true
+        text:
+          type: string
+        pub_date:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - text
+    AuthToken:
+      type: object
+      properties:
+        username:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        token:
+          type: string
+          readOnly: true
+      required:
+      - username
+      - password
