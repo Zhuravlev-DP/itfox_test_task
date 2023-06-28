@@ -15,7 +15,7 @@ services:
       - .env
 
   web:
-    build: ../itfox_test_task
+    image: zhuravlevdp/itfox_test_task:latest
     restart: always
     volumes:
       - static_value:/app/static/
