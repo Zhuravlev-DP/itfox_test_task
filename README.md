@@ -1,9 +1,5 @@
 ![workflow status](https://github.com/Zhuravlev-DP/itfox_test_task/actions/workflows/itfox_test_task.yml/badge.svg)
 
-Проект доступен по адресу: http://158.160.106.232
-
-Документация к API проекта: http://158.160.106.232/redoc/
-
 ### News Service
 Предполагается аутентификация пользователей на основе токенов. Данный сервис предназначен для создания и просмотра новостей. Пользователи могут оставлять отзывы к новостям, ставить лайки.
 
@@ -40,7 +36,7 @@ docker-compose exec web python manage.py collectstatic --no-input
 docker-compose exec web python manage.py createsuperuser
 ```
 - Стандартная админ-панель Django доступна по адресу [`https://localhost/admin/`](https://localhost/admin/)
-- Документация к проекту доступна по адресу [`https://localhost/api/docs/`](`https://localhost/redoc/`)
+- Документация к проекту доступна по адресу [`https://localhost/api/docs/`](https://localhost/redoc/)
 
 #### Запуск API проекта в dev-режиме
 
@@ -74,17 +70,4 @@ python manage.py createsuperuser
 - Запуск сервера
 ```bash
 python manage.py runserver
-```
-- Тестовые данные пользователей занесены в базу данных. Пользователю необходимо отправлять токен в загаловке каждого запроса. Получить токен через /api/v1/auth/ согласно документации. Также вы можете создать нового пользователя через админ-панель.
-```
-Данные админа:
-    "username": "root"
-    "password": "root"
-
-Данные пользователей:
-    "username": "max"
-    "password": "max1234567890"
-
-    "username": "vasya"
-    "password": "vasya1234567890"
 ```
