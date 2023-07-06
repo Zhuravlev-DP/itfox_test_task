@@ -1,4 +1,4 @@
-![workflow status](https://github.com/Zhuravlev-DP/itfox_test_task/actions/workflows/itfox_test_task.yml/badge.svg)
+![workflow status](https://github.com/Zhuravlev-DP/news_service/actions/workflows/news_service.yml/badge.svg)
 
 Проект доступен по адресу: http://158.160.106.232
 
@@ -24,7 +24,7 @@
 
 - Клонирование удаленного репозитория
 ```bash
-git clone git@github.com:Zhuravlev-DP/itfox_test_task.git
+git clone git@github.com:Zhuravlev-DP/news_service.git
 cd infra
 ```
 - В директории /infra создайте файл .env, с переменными окружения, используя образец [.env.example](infra/.env.example)
@@ -45,7 +45,7 @@ docker-compose exec web python manage.py createsuperuser
 #### Запуск API проекта в dev-режиме
 
 - Клонирование удаленного репозитория (см. выше)
-- в файле itfox_test_task/itfox_test_task/setting.py замените БД на встроенную SQLite
+- в файле news_service/news_service/setting.py замените БД на встроенную SQLite
 ```python
 DATABASES = {
     'default': {
@@ -65,7 +65,7 @@ pip install -r -requirements.txt
 ```
 - Примените миграции, соберите статику, создайте суперпользователя
 ```bash
-cd itfox_test_task
+cd news_service
 python manage.py makemigrations
 python manage.py migrate
 python manage.py collectstatic --noinput

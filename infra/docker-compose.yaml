@@ -15,7 +15,7 @@ services:
       - .env
 
   web:
-    image: zhuravlevdp/itfox_test_task:latest
+    image: zhuravlevdp/news_service:latest
     restart: always
     volumes:
       - type: volume

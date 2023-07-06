@@ -3,4 +3,4 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt --no-cache-dir
 COPY . .
-CMD ["gunicorn", "itfox_test_task.wsgi:application", "--bind", "0:8000"]
+CMD ["gunicorn", "news_service.wsgi:application", "--bind", "0:8000"]

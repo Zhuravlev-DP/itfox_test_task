@@ -45,7 +45,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'itfox_test_task.urls'
+ROOT_URLCONF = 'news_service.urls'
 
 TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
 TEMPLATES = [
@@ -64,7 +64,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'itfox_test_task.wsgi.application'
+WSGI_APPLICATION = 'news_service.wsgi.application'
 
 DATABASES = {
     'default': {
