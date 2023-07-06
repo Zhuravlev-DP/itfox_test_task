@@ -1,5 +1,3 @@
-![workflow status](https://github.com/Zhuravlev-DP/news_service/actions/workflows/news_service.yml/badge.svg)
-
 ### News Service
 Предполагается аутентификация пользователей на основе токенов. Данный сервис предназначен для создания и просмотра новостей. Пользователи могут оставлять отзывы к новостям, ставить лайки.
 
